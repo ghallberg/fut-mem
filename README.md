@@ -5,6 +5,7 @@ Fetches data from [Mat.se](mat.se) to grab some stats.
 
 ## Usage
 `make test` to run tests
+
 `make run` to run script, ourput will be in root-dir
 
 ## Contributing
