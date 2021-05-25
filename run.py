@@ -5,8 +5,6 @@ import json
 from fut_mem import counting, parsing
 
 root_cat = parsing.fetch_cat_tree()
-# with io.open('tests/fixtures/cat_tree.json') as cat_tree_json:
-#    root_cat = json.loads(cat_tree_json.read())
 
 root_cat_id = root_cat["id"]
 
@@ -14,8 +12,6 @@ cat_ids = parsing.gather_cat_ids(root_cat)
 print(f"Got {len(cat_ids)} cat ids")
 
 all_prods = parsing.fetch_prods(root_cat_id)
-# with io.open('tests/fixtures/all_prods.json') as prods_json:
-#    all_prods = json.loads(prods_json.read())
 
 print(f"Got {len(all_prods)} prods")
 
