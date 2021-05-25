@@ -1,8 +1,6 @@
 import io
 import json
 
-import pytest
-
 from fut_mem import counting
 
 bageri_fixture = json.loads(io.open("tests/fixtures/bageri.json").read())
