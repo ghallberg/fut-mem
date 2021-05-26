@@ -11,6 +11,8 @@ root_cat_id = root_cat["id"]
 cat_ids = parsing.gather_cat_ids(root_cat)
 print(f"Got {len(cat_ids)} cat ids")
 
+# The data all fits in memory, so to avoid multiple GET calls I just get it all in one go.
+# If the data set was bigger, or memory smaller we could fetch each category by itself in the for-loop below.
 all_prods = parsing.fetch_prods(root_cat_id)
 
 print(f"Got {len(all_prods)} prods")
@@ -28,10 +30,14 @@ for id in cat_ids:
     swedish_percentages[id] = counting.swedish_percent(cat_prods)
 
 with io.open("counts.json", mode="w") as counts_json:
-    counts_json.write(json.dumps(counts))
+    counts_json.write(json.dumps(counts, indent=4, sort_keys=True))
 
 with io.open("best_seller_lists.json", mode="w") as best_seller_lists_json:
-    best_seller_lists_json.write(json.dumps(best_seller_lists))
+    best_seller_lists_json.write(
+        json.dumps(best_seller_lists, indent=4, sort_keys=True)
+    )
 
 with io.open("swedish_percentages.json", mode="w") as swedish_percentages_json:
-    swedish_percentages_json.write(json.dumps(swedish_percentages))
+    swedish_percentages_json.write(
+        json.dumps(swedish_percentages, indent=4, sort_keys=True)
+    )

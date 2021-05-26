@@ -26,5 +26,6 @@ def get_cat_prods(prods, cat_id):
 def gather_cat_ids(cat):
     sub_cats = cat["subCategories"]
 
+    # Not in love with this solution for collecting the ids, I'm sure there's a neater way to do it.
     sub_cat_ids = reduce(add, map(gather_cat_ids, sub_cats), [])
     return [cat["id"]] + list(sub_cat_ids)
